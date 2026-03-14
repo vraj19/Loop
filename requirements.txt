@@ -1,0 +1,3 @@
+pydantic
+sqlite-utils
+numpy

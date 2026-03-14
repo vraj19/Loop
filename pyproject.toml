@@ -1,0 +1,5 @@
+[project]
+name = "loop"
+version = "0.1.0"
+description = "Personal intelligence runtime"
+requires-python = ">=3.10"
