@@ -4,3 +4,10 @@ __pycache__/
 .env
 .DS_Store
 dev/
+loop.db
+scripts/test_script.py
+faiss.index
+.vscode/launch.json
+.vscode/settings.json
+.vscode/settings.json
+.vscode/settings.json

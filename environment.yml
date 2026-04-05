@@ -1,0 +1,14 @@
+rm Miniforge3-MacOSX-arm64.shname: loop-env
+channels:
+  - conda-forge
+  - pytorch
+dependencies:
+  - python=3.11
+  - faiss-cpu
+  - pytorch
+  - numpy
+  - pydantic
+  - sqlite-utils
+  - pip
+  - pip:
+      - sentence-transformers

@@ -6,6 +6,8 @@ DB_PATH = Path("loop.db")
 def get_connection():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
+
+    conn.execute("PRAGMA foreign_keys = ON;")
     return conn
 
 def init_db():
@@ -15,10 +17,12 @@ def init_db():
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS events (
             id TEXT PRIMARY KEY,
+            faiss_id INTEGER UNIQUE,
             timestamp TEXT NOT NULL,
             source TEXT,
             content TEXT,
-            metadata TEXT
+            metadata TEXT,
+            embedding BLOB
         )
         """)
 
@@ -51,5 +55,12 @@ def init_db():
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_relations_object ON relations(object_entity)")
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_relations_event ON relations(event_id)")
 
+
+    cursor.execute("""
+        CREATE VIRTUAL TABLE IF NOT EXISTS events_fts USING fts5(
+            id,
+            content
+        )
+        """)
     conn.commit()
     conn.close()

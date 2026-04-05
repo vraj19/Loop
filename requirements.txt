@@ -1,3 +1,5 @@
 pydantic
 sqlite-utils
 numpy
+faiss-cpu
+sentence-transformers
